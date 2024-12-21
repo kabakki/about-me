@@ -7,7 +7,54 @@ body {
     margin: 0;
     background-color: #000000;
     color: #ffffff;
+    overflow: hidden;
+    position: relative;
 }
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.light {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, crimson, transparent);
+    animation: pulse 5s linear infinite;
+    opacity: 0.6;
+}
+
+.light:nth-child(1) { top: 20%; animation-delay: 0s; }
+.light:nth-child(2) { top: 40%; animation-delay: -1s; }
+.light:nth-child(3) { top: 60%; animation-delay: -2s; }
+.light:nth-child(4) { top: 80%; animation-delay: -3s; }
+.light:nth-child(5) { top: 100%; animation-delay: -4s; }
+
+@keyframes pulse {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+    }
+    25% {
+        transform: translateY(-20px) translateX(10px);
+    }
+    50% {
+        transform: translateY(20px) translateX(-10px);
+    }
+    75% {
+        transform: translateY(10px) translateX(20px);
+    }
+}
+
 .widget {
     background-color: #1a1a1a;
     border-radius: 10px;
@@ -16,16 +63,20 @@ body {
     max-width: 300px;
     width: 100%;
     transition: transform 0.3s ease;
+    z-index: 1;
 }
+
 .widget:hover {
     transform: translateY(-5px);
 }
+
 .widget h1 {
     font-size: 28px;
     margin-bottom: 20px;
     color: crimson;
     text-align: center;
 }
+
 .widget .photo {
     width: 100px;
     height: 100px;
@@ -35,14 +86,17 @@ body {
     overflow: hidden;
     transition: transform 0.3s ease;
 }
+
 .widget .photo:hover {
     transform: scale(1.1);
 }
+
 .widget .photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
+
 .widget p {
     font-size: 14px;
     color: #cccccc;
@@ -50,19 +104,24 @@ body {
     display: flex;
     align-items: center;
 }
+
 .widget p i {
     color: crimson;
     margin-right: 10px;
     width: 20px;
 }
+
 .widget .contact {
     margin-top: 20px;
 }
+
 .widget .contact a {
     color: crimson;
     text-decoration: none;
     transition: color 0.3s ease;
 }
+
 .widget .contact a:hover {
     color: #ff6b8b;
 }
+
